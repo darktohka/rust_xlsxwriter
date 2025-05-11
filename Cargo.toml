@@ -16,6 +16,7 @@ rust-version = "1.73.0" # For zip.rs compatibility.
 zip = { version = "2.5", default-features = false, features = [] }
 
 # Optional dependencies.
+flate2 = {version = "1.1", optional = true}
 ryu = {version = "1.0", optional = true}
 serde = {version = "1.0", features = ["derive"], optional = true}
 chrono = {version = "0.4", default-features = false, features = ["clock", "wasmbind", "serde"], optional = true}
@@ -39,7 +40,7 @@ default = ["flate2"]
 zlib = ["zip/deflate-zlib"]
 
 # `flate2`: Adds support for `flate2` DEFLATE compression. Enabled by default.
-flate2 = ["zip/deflate-flate2"]
+flate2 = ["dep:flate2", "zip/deflate-flate2"]
 
 # `chrono`: Adds support for Chrono dates/times in addition to the native
 # ExcelDateTime types.
